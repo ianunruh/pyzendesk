@@ -3,6 +3,7 @@ import time
 
 import requests
 
+from zendesk import exceptions
 from zendesk.translation import *
 
 LOG = logging.getLogger('zendesk')
@@ -26,6 +27,16 @@ class Client(object):
         }
 
         return self.fetch_paged('/api/v2/search.json', params=params)
+
+    def find(self, *args, **kwargs):
+        last_result = None
+        for result in self.search(*args, **kwargs):
+            if last_result:
+                raise exceptions.MultipleResulsts()
+
+            last_result = result
+
+        return last_result
 
     @map_single('organization')
     def organization(self, id):
