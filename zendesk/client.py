@@ -88,6 +88,15 @@ class Client(object):
     def ticket_comments(self, id):
         return self.fetch_paged('/api/v2/tickets/{}/comments.json'.format(id))
 
+    @map_single('upload')
+    def upload_attachment(self, filename, stream, token=None):
+        params = {
+            'filename': filename,
+            'token': token,
+        }
+
+        return self.post('/api/v2/uploads.json', params=params, data=stream).json()
+
     @property
     @map_single('user')
     def current_user(self):
