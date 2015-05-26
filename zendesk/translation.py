@@ -11,6 +11,7 @@ def map_result_type(client, data):
     return SINGULAR_NOUN_MAP[data['result_type']](client, data)
 
 PLURAL_NOUN_MAP = {
+    'audits': resources.TicketAudit,
     'comments': resources.TicketComment,
     'groups': resources.Group,
     'organizations': resources.Organization,

@@ -105,6 +105,10 @@ class Client(object):
     def delete_ticket(self, id):
         return self.delete('/api/v2/tickets/{}.json'.format(id))
 
+    @map_paged('audits')
+    def ticket_audits(self, id):
+        return self.fetch_paged('/api/v2/tickets/{}/audits.json'.format(id))
+
     @map_paged('comments')
     def ticket_comments(self, id):
         return self.fetch_paged('/api/v2/tickets/{}/comments.json'.format(id))

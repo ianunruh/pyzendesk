@@ -71,6 +71,15 @@ class Ticket(Resource):
     def delete(self):
         self._client.delete_ticket(self.id)
 
+class TicketAudit(Resource):
+    @property
+    def author(self):
+        return self._client.user(self.author_id)
+
+    @property
+    def ticket(self):
+        return self._client.ticket(self.ticket_id)
+
 class TicketComment(Resource):
     @property
     def author(self):
