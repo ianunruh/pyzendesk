@@ -59,6 +59,18 @@ class Ticket(Resource):
         if self.problem_id:
             return self._client.ticket(self.problem_id)
 
+    def add_tags(self, *tags):
+        self._client.add_tags_to_ticket(self.id, *tags)
+
+    def remove_tags(self, *tags):
+        self._client.remove_tags_from_ticket(self.id, *tags)
+
+    def update(self, **kwargs):
+        self._client.update_ticket(self.id, **kwargs)
+
+    def delete(self):
+        self._client.delete_ticket(self.id)
+
 class TicketComment(Resource):
     @property
     def author(self):
