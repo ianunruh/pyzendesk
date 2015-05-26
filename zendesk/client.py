@@ -47,6 +47,27 @@ class Client(object):
     def organizations(self):
         return self.fetch_paged('/api/v2/organizations.json')
 
+    def add_tags_to_ticket(self, id, *tags):
+        params = {
+            'tags': tags,
+        }
+
+        self.put('/api/v2/tickets/{}/tags.json'.format(id), json=params)
+        
+    def set_tags_on_ticket(self, id, *tags):
+        params = {
+            'tags': tags,
+        }
+
+        self.post('/api/v2/tickets/{}/tags.json'.format(id), json=params)
+        
+    def remove_tags_from_ticket(self, id, *tags):
+        params = {
+            'tags': tags,
+        }
+
+        self.delete('/api/v2/tickets/{}/tags.json'.format(id), json=params)
+
     @map_single('ticket')
     def ticket(self, id):
         return self.get('/api/v2/tickets/{}.json'.format(id)).json()
