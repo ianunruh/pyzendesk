@@ -59,6 +59,10 @@ class Ticket(Resource):
         if self.problem_id:
             return self._client.ticket(self.problem_id)
 
+    @property
+    def audits(self):
+        return self._client.ticket_audits(self.id)
+
     def add_tags(self, *tags):
         self._client.add_tags_to_ticket(self.id, *tags)
 
