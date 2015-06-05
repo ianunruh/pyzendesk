@@ -89,6 +89,9 @@ class TicketComment(Resource):
     def author(self):
         return self._client.user(self.author_id)
 
+class TicketField(Resource):
+    pass
+
 class Upload(Resource):
     pass
 

@@ -113,6 +113,11 @@ class Client(object):
     def ticket_comments(self, id):
         return self.fetch_paged('/api/v2/tickets/{}/comments.json'.format(id))
 
+    @property
+    @map_paged('ticket_fields')
+    def ticket_fields(self):
+        return self.fetch_paged('/api/v2/ticket_fields.json')
+
     @map_single('upload')
     def upload_attachment(self, filename, stream, token=None):
         params = {

@@ -17,6 +17,7 @@ PLURAL_NOUN_MAP = {
     'organizations': resources.Organization,
     'results': map_result_type,
     'tickets': resources.Ticket,
+    'ticket_fields': resources.TicketField,
     'users': resources.User,
 }
 
