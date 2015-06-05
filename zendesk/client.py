@@ -38,6 +38,20 @@ class Client(object):
 
         return last_result
 
+    @map_single('group')
+    def group(self, id):
+        return self.get('/api/v2/groups/{}.json'.format(id)).json()
+
+    @property
+    @map_paged('groups')
+    def groups(self):
+        return self.fetch_paged('/api/v2/groups.json')
+    
+    @property
+    @map_paged('groups')
+    def assignable_groups(self):
+        return self.fetch_paged('/api/v2/groups/assignable.json')
+
     @map_single('organization')
     def organization(self, id):
         return self.get('/api/v2/organizations/{}.json'.format(id)).json()
