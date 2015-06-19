@@ -28,14 +28,29 @@ class Client(object):
 
         return self.fetch_paged('/api/v2/search.json', params=params)
 
-    def find(self, *args, **kwargs):
+    def find_one(self, *args, **kwargs):
         last_result = None
         for result in self.search(*args, **kwargs):
             if last_result:
-                raise exceptions.MultipleResulsts()
+                raise exceptions.MultipleResults()
 
             last_result = result
 
+        return last_result
+
+    def find_first(self, *args, **kwargs):
+        first_result = None
+        for result in self.search(*args, **kwargs):
+            first_result = result
+            break
+        
+        return first_result
+
+    def find_last(self, *args, **kwargs):
+        last_result = None
+        for result in self.search(*args, **kwargs):
+            last_result = result
+        
         return last_result
 
     @map_single('group')
