@@ -100,6 +100,14 @@ class Client(object):
     def organization_tickets(self, id):
         return self.fetch_paged('/api/v2/organizations/{}/tickets.json'.format(id))
 
+    @map_paged('tickets')
+    def tickets_requested_by_user(self, user_id):
+        return self.fetch_paged('/api/v2/users/{}/tickets/requested.json'.format(user_id))
+
+    @map_paged('tickets')
+    def tickets_assigned_to_user(self, user_id):
+        return self.fetch_paged('/api/v2/users/{}/tickets/assigned.json'.format(user_id))
+
     @map_single('ticket')
     def create_ticket(self, **kwargs):
         params = {
