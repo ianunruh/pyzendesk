@@ -70,7 +70,7 @@ class Ticket(Resource):
         self._client.remove_tags_from_ticket(self.id, *tags)
 
     def update(self, **kwargs):
-        self._client.update_ticket(self.id, **kwargs)
+        return self._client.update_ticket(self.id, **kwargs)
 
     def delete(self):
         self._client.delete_ticket(self.id)
