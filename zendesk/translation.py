@@ -5,6 +5,7 @@ SINGULAR_NOUN_MAP = {
     'organization': resources.Organization,
     'ticket': resources.Ticket,
     'user': resources.User,
+    'upload': resources.Upload,
 }
 
 def map_result_type(client, data):
