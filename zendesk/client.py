@@ -155,6 +155,11 @@ class Client(object):
     def ticket_fields(self):
         return self.fetch_paged('/api/v2/ticket_fields.json')
 
+    @property
+    @map_paged('ticket_forms')
+    def ticket_forms(self):
+        return self.fetch_paged('/api/v2/ticket_forms.json')
+
     @map_single('upload')
     def upload_attachment(self, filename, stream, token=None):
         params = {

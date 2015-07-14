@@ -92,6 +92,9 @@ class TicketComment(Resource):
 class TicketField(Resource):
     pass
 
+class TicketForm(Resource):
+    pass
+
 class Upload(Resource):
     pass
 
