@@ -4,6 +4,7 @@ SINGULAR_NOUN_MAP = {
     'group': resources.Group,
     'organization': resources.Organization,
     'ticket': resources.Ticket,
+    'ticket_form': resources.TicketForm,
     'user': resources.User,
     'upload': resources.Upload,
 }

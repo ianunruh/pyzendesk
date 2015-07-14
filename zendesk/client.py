@@ -155,6 +155,10 @@ class Client(object):
     def ticket_fields(self):
         return self.fetch_paged('/api/v2/ticket_fields.json')
 
+    @map_single('ticket_form')
+    def ticket_form(self, id):
+        return self.get('/api/v2/ticket_forms/{}.json'.format(id)).json()
+
     @property
     @map_paged('ticket_forms')
     def ticket_forms(self):

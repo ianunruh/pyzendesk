@@ -63,6 +63,10 @@ class Ticket(Resource):
     def audits(self):
         return self._client.ticket_audits(self.id)
 
+    @property
+    def ticket_form(self):
+        return self._client.ticket_form(self.ticket_form_id)
+
     def add_tags(self, *tags):
         self._client.add_tags_to_ticket(self.id, *tags)
 
